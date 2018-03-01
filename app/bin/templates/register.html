@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Team Lunch | Sign up</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+        <script src="https://use.fontawesome.com/releases/v5.0.0/js/all.js" />
+    </head>
+    <body>
+        <section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-one-third" />
+                    <div class="column is-one-third">
+                    	<form th:action="@{/users}" method="post">
+                    	    <div class="field">
+							    <div class="control">
+							    	<input name="email" class="input" type="email" placeholder="E-Mail" />
+							  	</div>
+							</div>
+							<div class="field">
+							    <div class="control">
+							    	<input name="firstname" class="input" type="text" placeholder="Vorname" />
+							  	</div>
+							</div>
+							<div class="field">
+							    <div class="control">
+							    	<input name="lastname" class="input" type="text" placeholder="Nachname" />
+							  	</div>
+							</div>
+							<div class="field">
+							    <div class="control">
+							    	<input name="password" class="input" type="password" placeholder="Password" />
+							  	</div>
+							</div>
+							<div class="field">
+							    <div class="control">
+							    	<input name="passwordRepeat" class="input" type="password" placeholder="Passwort wiederholen" />
+							  	</div>
+							</div>
+				            <div><input type="submit" class="button is-link" value="Sign up"/></div>
+				        </form>
+                    </div>
+                    <div class="column is-one-third" />
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

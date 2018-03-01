@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Team Lunch | Sign in</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
+        <script src="https://use.fontawesome.com/releases/v5.0.0/js/all.js" />
+    </head>
+    <body>
+    	<section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-one-third" />
+                    <div class="column is-one-third">
+                        <div th:if="${param.error}">
+				            Invalid username and password.
+				        </div>
+				        <div th:if="${param.logout}">
+				            You have been logged out.
+				        </div>
+                    	<form th:action="@{/users/login}" method="post">
+                    	    <div class="field">
+							    <div class="control">
+							    	<input name="username" class="input" type="email" placeholder="E-Mail" />
+							  	</div>
+							</div>
+							<div class="field">
+							    <div class="control">
+							    	<input name="password" class="input" type="password" placeholder="Passwort" />
+							  	</div>
+							</div>
+				            <div><input type="submit" class="button is-link" value="Sign in"/></div>
+				        </form>
+                    </div>
+                    <div class="column is-one-third" />
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

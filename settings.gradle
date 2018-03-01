@@ -1,0 +1,6 @@
+rootProject.name = 'team-lunch-planner'
+
+include 'domain'
+include 'persistence'
+include 'rest'
+include 'app'
