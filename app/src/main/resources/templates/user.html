@@ -13,7 +13,18 @@
                 <div class="columns">
                     <div class="column is-one-third" />
                     <div class="column is-one-third">
-                    	Benutzerseite
+                        <div>
+                            <span th:text="${user.firstname}" />
+                    		<span th:text="${user.lastname}" />
+                        </div>
+                        <form action="#" th:action="@{/teams}" method="post">
+                            <div class="field">
+							    <div class="control">
+							    	<input name="name" class="input" type="text" placeholder="Teamname" />
+							  	</div>
+							</div>
+                        	<input type="submit" class="button is-link" value="Team erstellen" />
+                        </form>
                     </div>
                     <div class="column is-one-third" />
                 </div>

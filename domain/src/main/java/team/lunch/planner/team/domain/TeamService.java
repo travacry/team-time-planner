@@ -3,8 +3,12 @@ package team.lunch.planner.team.domain;
 import java.util.List;
 
 public interface TeamService {
+    
+    Team saveTeam(Team team);
 
     Team determineTeam(Long teamId);
+
+    List<Team> determineTeams(Long userId);
 
     void selectNextUser(Long teamId);
 

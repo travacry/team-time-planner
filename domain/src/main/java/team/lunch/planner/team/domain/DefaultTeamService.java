@@ -5,16 +5,25 @@ import java.util.Objects;
 import java.util.stream.IntStream;
 
 import lombok.RequiredArgsConstructor;
-import team.lunch.planner.user.domain.User;
 
 @RequiredArgsConstructor
 public class DefaultTeamService implements TeamService {
 
     private final TeamRepository teamRepository;
+    
+    @Override
+    public Team saveTeam(Team team) {
+        return teamRepository.save(team);
+    }
 
     @Override
     public Team determineTeam(Long teamId) {
         return teamRepository.determineTeam(teamId);
+    }
+    
+    @Override
+    public List<Team> determineTeams(Long userId) {
+        return teamRepository.determineTeams(userId);
     }
 
     @Override

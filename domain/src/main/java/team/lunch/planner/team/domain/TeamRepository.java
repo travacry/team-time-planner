@@ -5,8 +5,10 @@ import java.util.List;
 public interface TeamRepository {
 
     Team determineTeam(Long id);
+    
+    List<Team> determineTeams(Long userId);
 
-    void save(Team team);
+    Team save(Team team);
 
     List<Team> determineAllTeams();
 }

@@ -20,7 +20,7 @@ public class UserController {
     private final UserService userService;
     
     @GetMapping
-    public String register(Model model) {
+    public String register() {
         return "register";
     }
     
@@ -37,6 +37,8 @@ public class UserController {
     
     @GetMapping(path = "/{userId}")
     public String user(@PathVariable Long userId, Model model) {
+        User user = userService.determineUser(userId);
+        model.addAttribute("user", user);
         return "user";
     }
 
