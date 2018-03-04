@@ -2,6 +2,7 @@ package team.lunch.planner.user.domain;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
 
 import lombok.RequiredArgsConstructor;
 
@@ -10,19 +11,25 @@ public class DefaultUserService implements UserService  {
 
     private final UserRepository userRepository;
 
+    @Override
     public User determineCurrentUser() {
         return userRepository.determineCurrentUser();
     }
 
+    @Override
     public User determineUser(Long userId) {
         return userRepository.determineUser(userId);
     }
 
+    @Override
     public void updateUser(User user) {
         userRepository.saveUser(user);
     }
 
+    @Override
     public User createUser(String email, String password, String passwordRepeat, String firstname, String lastname) {
+        Preconditions.checkArgument(!Strings.isNullOrEmpty(password));
+        Preconditions.checkArgument(!Strings.isNullOrEmpty(passwordRepeat));
         Preconditions.checkArgument(Objects.equal(password, passwordRepeat));
         Preconditions.checkArgument(!userRepository.determineUser(email).isPresent());
 

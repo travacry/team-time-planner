@@ -44,17 +44,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .mvcMatchers(HttpMethod.GET, "/", "/index", "/users").permitAll()
-            .mvcMatchers(HttpMethod.POST, "/users").permitAll()
-                .anyRequest().fullyAuthenticated()
-                .and()
-            .formLogin()
-                .loginPage("/users/login")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll();
-//        http.httpBasic();
-//        http.csrf().disable();
+            .mvcMatchers(HttpMethod.OPTIONS).permitAll()
+            .mvcMatchers(HttpMethod.POST, "/api/users").permitAll()
+                .anyRequest().fullyAuthenticated();
+//                .and()
+//            .formLogin()
+//                .loginPage("/users/login")
+//                .permitAll()
+//                .and()
+//            .logout()
+//                .permitAll();
+        http.httpBasic();
+        http.cors();
+        http.csrf().disable();
     }
 }

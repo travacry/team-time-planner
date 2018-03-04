@@ -12,6 +12,8 @@ dependencies {
 //            'org.springframework.boot:spring-boot-starter-security:1.5.9.RELEASE',
             'org.springframework.boot:spring-boot-starter-hateoas:1.5.9.RELEASE'
     )
+    
+    compile project(':domain')
 
 	testCompile(
 			'org.springframework.boot:spring-boot-starter-test:1.5.9.RELEASE',

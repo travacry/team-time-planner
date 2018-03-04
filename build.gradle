@@ -21,7 +21,7 @@ dependencies {
 //            'org.springframework.boot:spring-boot-starter-data-rest',
             'org.springframework.boot:spring-boot-starter-thymeleaf',
             'org.springframework.boot:spring-boot-starter-web',
-            'org.springframework.boot:spring-boot-starter-security',
+//            'org.springframework.boot:spring-boot-starter-security',
             'org.springframework.boot:spring-boot-starter-hateoas'
     )
 
