@@ -45,6 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             .mvcMatchers(HttpMethod.OPTIONS).permitAll()
+            .mvcMatchers(HttpMethod.GET, "/index").permitAll()
+            .mvcMatchers(HttpMethod.GET, "/").permitAll()
+            .mvcMatchers(HttpMethod.GET, "/js/**").permitAll()
+            .mvcMatchers(HttpMethod.GET, "/css/**").permitAll()
+            .mvcMatchers(HttpMethod.GET, "/favicon.ico").permitAll()
             .mvcMatchers(HttpMethod.POST, "/api/users").permitAll()
                 .anyRequest().fullyAuthenticated();
 //                .and()
