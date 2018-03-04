@@ -1,6 +1,5 @@
 package team.lunch.planner;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -24,12 +23,12 @@ public class LunchApplication {
         SpringApplication.run(LunchApplication.class, args);
     }
     
-    @Bean
-    public CommandLineRunner init(UserService userService) {
-        return args -> {
-            userService.createUser("andre.schreck@eventim.de", "1234", "1234", "André", "Schreck");
-        };
-    }
+//    @Bean
+//    public CommandLineRunner init(UserService userService) {
+//        return args -> {
+//            userService.createUser("andre.schreck@eventim.de", "1234", "1234", "André", "Schreck");
+//        };
+//    }
 
     @Bean
     public TeamService teamService(TeamRepository teamRepository) {
