@@ -51,14 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .mvcMatchers(HttpMethod.GET, "/css/**").permitAll()
             .mvcMatchers(HttpMethod.GET, "/favicon.ico").permitAll()
             .mvcMatchers(HttpMethod.POST, "/api/users").permitAll()
-                .anyRequest().fullyAuthenticated();
-//                .and()
-//            .formLogin()
-//                .loginPage("/users/login")
-//                .permitAll()
-//                .and()
-//            .logout()
-//                .permitAll();
+            .anyRequest().fullyAuthenticated();
         http.httpBasic();
         http.cors();
         http.csrf().disable();
