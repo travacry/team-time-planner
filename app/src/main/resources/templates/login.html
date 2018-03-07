@@ -13,7 +13,19 @@
                 <div class="columns">
                     <div class="column is-one-third"></div>
                     <div class="column is-one-third">
-                        <a href="/register">Registrieren</a> | <a href="/login">Login</a>
+                        <form th:action="@{/login}" method="post">
+                            <div class="field">
+							    <div class="control">
+							    	<input type="email" name="username" class="input" placeholder="E-Mail" />
+							  	</div>
+							</div>
+							<div class="field">
+							    <div class="control">
+							    	<input type="password" name="password" class="input" placeholder="Passwort" />
+							  	</div>
+							</div>
+							<div><input type="submit" class="button is-link" value="Login"/></div> 
+                        </form>
                     </div>
                     <div class="column is-one-third"></div>
                 </div>

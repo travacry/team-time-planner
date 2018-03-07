@@ -8,6 +8,8 @@ import team.lunch.planner.team.domain.Team;
 @Component
 @RequiredArgsConstructor
 class TeamDTOMapper {
+    
+    private final MemberDTOMapper memberDTOMapper;
 
     Team map(TeamDTO team) {
         return null;

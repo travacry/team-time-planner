@@ -1,5 +1,6 @@
 package team.lunch.planner.team.domain
 
+import com.google.common.eventbus.EventBus
 import spock.lang.Specification
 import team.lunch.planner.user.domain.User
 
@@ -17,9 +18,12 @@ class DefaultTeamServiceSpec extends Specification {
         TeamRepository teamRepository = Mock(TeamRepository) {
             determineTeam(17) >> team
         }
+        
+        and: 'a mocked EventBus'
+        EventBus eventBus = new EventBus()
 
         and: 'a TeamService'
-        TeamService teamService = new DefaultTeamService(teamRepository);
+        TeamService teamService = new DefaultTeamService(teamRepository, eventBus);
 
         when: 'the next user is selected'
         teamService.selectNextUser(17)
@@ -51,9 +55,12 @@ class DefaultTeamServiceSpec extends Specification {
         TeamRepository teamRepository = Mock(TeamRepository) {
             determineTeam(17) >> team
         }
+        
+        and: 'a mocked EventBus'
+        EventBus eventBus = new EventBus()
 
         and: 'a TeamService'
-        TeamService teamService = new DefaultTeamService(teamRepository);
+        TeamService teamService = new DefaultTeamService(teamRepository, eventBus);
 
         when: 'the next user is selected'
         teamService.toggleParticipation(17, userId)
@@ -81,9 +88,12 @@ class DefaultTeamServiceSpec extends Specification {
         TeamRepository teamRepository = Mock(TeamRepository) {
             determineTeam(17) >> team
         }
+        
+        and: 'a EventBus'
+        EventBus eventBus = new EventBus()
 
         and: 'a TeamService'
-        TeamService teamService = new DefaultTeamService(teamRepository);
+        TeamService teamService = new DefaultTeamService(teamRepository, eventBus);
 
         when: 'the restaurant is changed'
         teamService.setRestaurant(17, 'New restaurant')

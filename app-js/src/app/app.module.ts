@@ -5,9 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { RegisterComponent } from './register/register.component';
+import { AppRoutingModule } from './app-routing.module';
 import { UserService } from './user.service';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamsService } from './teams.service';
@@ -16,8 +14,6 @@ import { TeamsService } from './teams.service';
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent,
-        RegisterComponent,
         TeamsComponent
     ],
     imports: [
