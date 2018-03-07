@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
+import com.google.common.eventbus.EventBus;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class DefaultTeamService implements TeamService {
 
     private final TeamRepository teamRepository;
+    private final EventBus eventBus;
     
     @Override
     public Team saveTeam(Team team) {

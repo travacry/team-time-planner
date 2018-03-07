@@ -3,13 +3,17 @@ package team.lunch.planner.user.domain;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
+import com.google.common.eventbus.EventBus;
 
 import lombok.RequiredArgsConstructor;
+import team.lunch.planner.user.domain.events.UserCreatedEvent;
+import team.lunch.planner.user.domain.events.UserUpdatedEvent;
 
 @RequiredArgsConstructor
 public class DefaultUserService implements UserService  {
 
     private final UserRepository userRepository;
+    private final EventBus eventBus;
 
     @Override
     public User determineCurrentUser() {
@@ -24,6 +28,7 @@ public class DefaultUserService implements UserService  {
     @Override
     public void updateUser(User user) {
         userRepository.saveUser(user);
+        eventBus.post(new UserUpdatedEvent());
     }
 
     @Override
@@ -33,7 +38,10 @@ public class DefaultUserService implements UserService  {
         Preconditions.checkArgument(Objects.equal(password, passwordRepeat));
         Preconditions.checkArgument(!userRepository.determineUser(email).isPresent());
 
-        return userRepository.createUser(email, password, firstname, lastname);
+        User createdUser = userRepository.createUser(email, password, firstname, lastname);
+        
+        eventBus.post(new UserCreatedEvent());
+        return createdUser;
     }
 
 //    public void invite(String email, User sender) {

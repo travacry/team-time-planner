@@ -6,6 +6,7 @@ import org.springframework.hateoas.ResourceProcessor;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
+import team.lunch.planner.team.rest.TeamDTO;
 
 @Component
 @RequiredArgsConstructor
@@ -17,6 +18,7 @@ class UserResourceProcessor implements ResourceProcessor<Resource<UserDTO>> {
     public Resource<UserDTO> process(Resource<UserDTO> resource) {
         UserDTO content = resource.getContent();
         resource.add(entityLinks.linkFor(UserDTO.class).slash(content.getId()).withSelfRel());
+        resource.add(entityLinks.linkFor(TeamDTO.class).withRel("teams"));
         return resource;
     }
 }

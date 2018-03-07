@@ -10,7 +10,7 @@ import team.lunch.planner.user.domain.User;
 class UserDTOMapper {
 
     public User map(UserDTO userDTO) {
-        return new User(userDTO.getId(), userDTO.getEmail(), "", userDTO.getFirstname(), userDTO.getLastname());
+        return new User(userDTO.getDatabaseId(), userDTO.getEmail(), "", userDTO.getFirstname(), userDTO.getLastname());
     }
 
     public UserDTO map(User user) {

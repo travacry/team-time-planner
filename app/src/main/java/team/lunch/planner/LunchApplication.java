@@ -8,6 +8,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.google.common.eventbus.EventBus;
+
 import team.lunch.planner.team.domain.DefaultTeamService;
 import team.lunch.planner.team.domain.TeamRepository;
 import team.lunch.planner.team.domain.TeamService;
@@ -23,21 +25,19 @@ public class LunchApplication {
         SpringApplication.run(LunchApplication.class, args);
     }
     
-//    @Bean
-//    public CommandLineRunner init(UserService userService) {
-//        return args -> {
-//            userService.createUser("andre.schreck@eventim.de", "1234", "1234", "André", "Schreck");
-//        };
-//    }
+    @Bean
+    public EventBus eventBus() {
+        return new EventBus();
+    }
 
     @Bean
     public TeamService teamService(TeamRepository teamRepository) {
-        return new DefaultTeamService(teamRepository);
+        return new DefaultTeamService(teamRepository, eventBus());
     }
 
     @Bean
     public UserService userService(UserRepository userRepository) {
-        return new DefaultUserService(userRepository);
+        return new DefaultUserService(userRepository, eventBus());
     }
     
     @Bean
