@@ -1,0 +1,26 @@
+<div class="field">
+    <div class="control">
+    	<input [(ngModel)]="user.email" class="input" type="email" placeholder="E-Mail" />
+  	</div>
+</div>
+<div class="field">
+    <div class="control">
+    	<input [(ngModel)]="user.firstname" class="input" type="text" placeholder="Vorname" />
+  	</div>
+</div>
+<div class="field">
+    <div class="control">
+    	<input [(ngModel)]="user.lastname" class="input" type="text" placeholder="Nachname" />
+  	</div>
+</div>
+<div class="field">
+    <div class="control">
+    	<input [(ngModel)]="user.password" class="input" type="password" placeholder="Password" />
+  	</div>
+</div>
+<div class="field">
+    <div class="control">
+    	<input [(ngModel)]="user.passwordRepeat" class="input" type="password" placeholder="Passwort wiederholen" />
+  	</div>
+</div>
+<div><button (click)="onRegister()" class="button is-link">Registrieren</button></div>
