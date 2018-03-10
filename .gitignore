@@ -18,7 +18,13 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 
-#Angular
+# Maven
+
+/target/
+*/target/
+
+
+# Angular
 
 # compiled output
 /dist
