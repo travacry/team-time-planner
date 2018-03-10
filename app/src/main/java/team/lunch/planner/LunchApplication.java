@@ -10,13 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.google.common.eventbus.EventBus;
 
-import team.lunch.planner.team.domain.DefaultTeamService;
-import team.lunch.planner.team.domain.TeamRepository;
-import team.lunch.planner.team.domain.TeamService;
-import team.lunch.planner.user.domain.DefaultUserService;
-import team.lunch.planner.user.domain.UserRepository;
-import team.lunch.planner.user.domain.UserService;
-
 @SpringBootApplication
 @EnableEntityLinks
 public class LunchApplication {
@@ -30,16 +23,6 @@ public class LunchApplication {
         return new EventBus();
     }
 
-    @Bean
-    public TeamService teamService(TeamRepository teamRepository) {
-        return new DefaultTeamService(teamRepository, eventBus());
-    }
-
-    @Bean
-    public UserService userService(UserRepository userRepository) {
-        return new DefaultUserService(userRepository, eventBus());
-    }
-    
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {

@@ -10,7 +10,7 @@ import team.lunch.planner.user.domain.events.UserCreatedEvent;
 import team.lunch.planner.user.domain.events.UserUpdatedEvent;
 
 @RequiredArgsConstructor
-public class DefaultUserService implements UserService  {
+class DefaultUserService implements UserService  {
 
     private final UserRepository userRepository;
     private final EventBus eventBus;

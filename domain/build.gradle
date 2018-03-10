@@ -1,14 +1,33 @@
+buildscript {
+    repositories { mavenCentral() }
+}
+
+plugins { id "io.spring.dependency-management" version "1.0.4.RELEASE" }
+
+ext { springBootVersion = '1.5.9.RELEASE' }
+
 apply plugin: 'java'
-apply plugin: 'groovy'
 apply plugin: 'eclipse'
 
-dependencies {
-    compile('com.google.guava:guava:23.5-jre')
+jar {
+    baseName = 'team-lunch-domain'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
 
-	testCompile(
-			'org.codehaus.groovy:groovy-all:2.4.4',
-			'org.spockframework:spock-core:1.0-groovy-2.4'
+repositories { mavenCentral() }
+
+dependencies {
+    compile(
+        'org.springframework.boot:spring-boot-starter',
+        'com.google.guava:guava:23.5-jre'
     )
 
     compileOnly('org.projectlombok:lombok:1.16.20')
+    
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
 }

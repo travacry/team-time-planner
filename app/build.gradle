@@ -1,39 +1,36 @@
 buildscript {
-    ext {
-        springBootVersion = '1.5.9.RELEASE'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
+    ext { springBootVersion = '1.5.9.RELEASE' }
+    repositories { mavenCentral() }
+    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
 }
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+    baseName = 'team-lunch-app'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+
+repositories { mavenCentral() }
 
 dependencies {
-    compile('com.google.guava:guava:23.5-jre',
-            'org.springframework.boot:spring-boot-starter-data-jpa',
-            'org.springframework.boot:spring-boot-starter-thymeleaf',
-            'org.springframework.boot:spring-boot-starter-web',
-            'org.springframework.boot:spring-boot-starter-security',
-            'org.springframework.boot:spring-boot-starter-hateoas'
+    compile(
+        'org.springframework.boot:spring-boot-starter-actuator',
+        'org.springframework.boot:spring-boot-starter-thymeleaf',
+        'org.springframework.boot:spring-boot-starter-web',
+        'org.springframework.boot:spring-boot-starter-hateoas',
+        'org.springframework.boot:spring-boot-starter-security'
     )
 
     compile project(':domain')
     compile project(':rest')
     compile project(':persistence')
 
-	testCompile(
-			'org.springframework.boot:spring-boot-starter-test',
-			'org.codehaus.groovy:groovy-all:2.4.4',
-			'org.spockframework:spock-core:1.0-groovy-2.4'
-    )
+    compileOnly('org.projectlombok:lombok:1.16.20')
 
-    runtime(
-			'com.h2database:h2',
-			'org.postgresql:postgresql'
-	)
-    compileOnly('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
