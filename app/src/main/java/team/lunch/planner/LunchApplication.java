@@ -21,24 +21,24 @@ import com.google.common.eventbus.EventBus;
 @EnableEntityLinks
 @RestController
 public class LunchApplication {
-    
+
     @RequestMapping("/user")
     public Principal user(Principal user) {
         return user;
     }
-    
+
     @RequestMapping("/resource")
     public Map<String,Object> home() {
-      Map<String,Object> model = new HashMap<String,Object>();
-      model.put("id", UUID.randomUUID().toString());
-      model.put("content", "Hello World");
-      return model;
+        Map<String,Object> model = new HashMap<String,Object>();
+        model.put("id", UUID.randomUUID().toString());
+        model.put("content", "Hello World");
+        return model;
     }
 
     public static void main(String[] args) {
         SpringApplication.run(LunchApplication.class, args);
     }
-    
+
     @Bean
     public EventBus eventBus() {
         return new EventBus();
