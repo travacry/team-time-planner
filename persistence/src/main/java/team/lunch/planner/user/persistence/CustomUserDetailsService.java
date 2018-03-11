@@ -6,14 +6,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import team.lunch.planner.user.domain.User;
 import team.lunch.planner.user.domain.UserRepository;
 
-@Component
+//@Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class CustomUserDetailsService implements UserDetailsService {
 
