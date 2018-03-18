@@ -5,6 +5,7 @@ import java.util.Collections;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
+import team.lunch.planner.team.domain.Lunch;
 import team.lunch.planner.team.domain.Team;
 
 @Component
@@ -14,7 +15,7 @@ class TeamDTOMapper {
     private final MemberDTOMapper memberDTOMapper;
 
     Team map(TeamDTO team) {
-        return new Team(team.getDatabaseId(), team.getName(), Collections.emptyList(), null);
+        return new Team(team.getDatabaseId(), team.getName(), Collections.emptyList(), new Lunch(null, Collections.emptyList()));
     }
     
     TeamDTO map(Team team) {
