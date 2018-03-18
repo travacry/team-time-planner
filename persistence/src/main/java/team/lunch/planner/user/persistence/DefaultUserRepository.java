@@ -3,6 +3,7 @@ package team.lunch.planner.user.persistence;
 import java.util.Optional;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
@@ -12,9 +13,10 @@ import team.lunch.planner.user.domain.UserRepository;
 @Component
 @RequiredArgsConstructor
 class DefaultUserRepository implements UserRepository {
-    
+
     private final UserEntityMapper userEntityMapper;
     private final UserEntityRepository userEntityRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Optional<User> determineUser(String email) {
@@ -24,7 +26,8 @@ class DefaultUserRepository implements UserRepository {
 
     @Override
     public User createUser(String email, String password, String firstname, String lastname) {
-        return userEntityMapper.map(userEntityRepository.save(new UserEntity(null, email, password, firstname, lastname)));
+        String encryptedPassword = passwordEncoder.encode(password);
+        return userEntityMapper.map(userEntityRepository.save(new UserEntity(null, email, encryptedPassword, firstname, lastname)));
     }
 
     @Override

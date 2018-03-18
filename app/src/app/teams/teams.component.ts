@@ -10,6 +10,7 @@ import { Team }              from '../team'
 export class TeamsComponent implements OnInit {
 
     teams: Team[];
+    teamName: string;
 
     constructor(private teamsService: TeamsService) { }
 
@@ -17,7 +18,7 @@ export class TeamsComponent implements OnInit {
     }
 
     onCreate() {
-
+        this.teamsService.createTeam(this.teamName).subscribe(team => this.teams.push(team));
     }
 
 }

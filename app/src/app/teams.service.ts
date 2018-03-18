@@ -10,7 +10,6 @@ export class TeamsService {
     constructor(private http: HttpClient) { }
 
     getTeams(): Observable<Team[]> {
-        console.log('register() in UserService');
         const httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -18,5 +17,17 @@ export class TeamsService {
             })
         };
         return this.http.get<Team[]>('https://team-lunch.herokuapp.com/api/teams', httpOptions);
+    }
+
+    createTeam(teamName: string): Observable<Team> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            })
+        };
+        const team = new Team();
+        team.name = teamName;
+        return this.http.post<Team>('https://team-lunch.herokuapp.com/api/teams', team, httpOptions);
     }
 }

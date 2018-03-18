@@ -1,3 +1,9 @@
 <p>
-  teams works!
+  <input [(ngModel)]="teamName" placeholder="Teamname" />
+  <button (click)="onCreate()">Team erstellen</button>
 </p>
+<ul>
+    <li *ngFor="let team of teams">
+        <span>{{team.name}}</span>
+    </li>
+</ul>
