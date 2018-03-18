@@ -1,5 +1,7 @@
 package team.lunch.planner.team.rest;
 
+import java.util.Collections;
+
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
@@ -12,10 +14,10 @@ class TeamDTOMapper {
     private final MemberDTOMapper memberDTOMapper;
 
     Team map(TeamDTO team) {
-        return null;
+        return new Team(team.getDatabaseId(), team.getName(), Collections.emptyList(), null);
     }
     
     TeamDTO map(Team team) {
-        return new TeamDTO(team.getId(), team.getName());
+        return new TeamDTO(team.getId(), team.getName(), Collections.emptyList());
     }
 }

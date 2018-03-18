@@ -1,6 +1,8 @@
 package team.lunch.planner.team.rest;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 
 import org.springframework.hateoas.ResourceSupport;
 
@@ -18,4 +20,5 @@ public class TeamDTO extends ResourceSupport implements Serializable {
     @JsonIgnore
     private Long databaseId;
     private String name;
+    private List<MemberDTO> members = Collections.emptyList();
 }
