@@ -15,6 +15,7 @@ export class TeamsComponent implements OnInit {
     constructor(private teamsService: TeamsService) { }
 
     ngOnInit() {
+        this.teamsService.getTeams().subscribe(teams => this.teams = teams);
     }
 
     onCreate() {
