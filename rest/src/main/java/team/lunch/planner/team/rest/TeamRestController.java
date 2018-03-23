@@ -60,7 +60,7 @@ public class TeamRestController extends AbstractController {
         Team team = teamDTOMapper.map(teamDTO);
         team.addMember(new Member(null, currentUser.getId()));
         
-        return ResponseEntity.ok(createResource(teamDTOMapper.map(teamService.saveTeam(team)), teamResourceProcessor));
+        return ResponseEntity.status(HttpStatus.CREATED).body(createResource(teamDTOMapper.map(teamService.saveTeam(team)), teamResourceProcessor));
     }
 
 }
