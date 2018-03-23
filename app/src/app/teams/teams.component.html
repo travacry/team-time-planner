@@ -1,7 +1,11 @@
-<p>
-  <input [(ngModel)]="teamName" placeholder="Teamname" />
-  <button (click)="onCreate()">Team erstellen</button>
-</p>
+<div class="field">
+    <div class="control">
+        <input [(ngModel)]="teamName" class="input" placeholder="Teamname" />
+    </div>
+</div>
+<div>
+    <button (click)="onCreate()" class="button is-primary">Team erstellen</button>
+</div>
 <ul>
     <li *ngFor="let team of teams">
         <a routerLink="/teams/{{team.id}}">{{team.name}}</a>
