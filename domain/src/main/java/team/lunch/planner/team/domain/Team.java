@@ -17,7 +17,6 @@ public class Team {
     private final Lunch lunch;
     
     public void addMember(Member member) {
-        // TODO Auto-generated method stub
-        
+        members.add(member);
     }
 }
