@@ -21,4 +21,5 @@ public class TeamDTO extends ResourceSupport implements Serializable {
     private Long databaseId;
     private String name;
     private List<MemberDTO> members = Collections.emptyList();
+    private LunchDTO lunch;
 }
