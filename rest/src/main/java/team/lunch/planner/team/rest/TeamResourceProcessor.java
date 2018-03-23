@@ -16,7 +16,7 @@ public class TeamResourceProcessor implements ResourceProcessor<Resource<TeamDTO
     @Override
     public Resource<TeamDTO> process(Resource<TeamDTO> resource) {
         TeamDTO team = resource.getContent();
-        resource.add(entityLinks.linkFor(TeamDTO.class).slash(team.getId()).withSelfRel());
+        resource.add(entityLinks.linkFor(TeamDTO.class).slash(team.getDatabaseId()).withSelfRel());
         return resource;
     }
 
