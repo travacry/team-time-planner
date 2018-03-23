@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TeamComponent implements OnInit {
 
-    id: string;
+    id: number;
 
     constructor(
         private route: ActivatedRoute
