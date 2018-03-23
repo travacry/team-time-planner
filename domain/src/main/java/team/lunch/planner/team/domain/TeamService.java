@@ -1,12 +1,13 @@
 package team.lunch.planner.team.domain;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TeamService {
     
     Team saveTeam(Team team);
 
-    Team determineTeam(Long teamId);
+    Optional<Team> determineTeam(Long userId, Long teamId);
 
     List<Team> determineTeams(Long userId);
 

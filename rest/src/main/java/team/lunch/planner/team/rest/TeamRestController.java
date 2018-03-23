@@ -5,8 +5,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +41,16 @@ public class TeamRestController extends AbstractController {
                 .map(teamDTOMapper::map)
                 .map(team -> createResource(team, teamResourceProcessor))
                 .collect(Collectors.toList()));
+    }
+    
+    @GetMapping(path="/{teamId}", produces="application/json")
+    public ResponseEntity<Resource<TeamDTO>> getTeam(@PathVariable Long teamId) {
+        User currentUser = userService.determineCurrentUser();
+        
+        return teamService.determineTeam(currentUser.getId(), teamId)
+                .map(teamDTOMapper::map)
+                .map(team -> ResponseEntity.ok(createResource(team, teamResourceProcessor)))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
     
     @PostMapping(produces="application/json")

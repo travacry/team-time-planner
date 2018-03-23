@@ -2,6 +2,7 @@ package team.lunch.planner.team.domain;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 import com.google.common.eventbus.EventBus;
@@ -20,10 +21,19 @@ class DefaultTeamService implements TeamService {
     }
 
     @Override
-    public Team determineTeam(Long teamId) {
-        return teamRepository.determineTeam(teamId);
+    public Optional<Team> determineTeam(Long userId, Long teamId) {
+        return Optional
+                .of(teamRepository.determineTeam(teamId))
+                .filter(team -> membersContainCurrentUser(team.getMembers(), userId));
     }
     
+    private boolean membersContainCurrentUser(List<Member> members, Long userId) {
+        return members.stream()
+                .filter(member -> Objects.equals(userId, member.getUserId()))
+                .findAny()
+                .isPresent();
+    }
+
     @Override
     public List<Team> determineTeams(Long userId) {
         return teamRepository.determineTeams(userId);
@@ -49,6 +59,11 @@ class DefaultTeamService implements TeamService {
         lunch.setRestaurant("");
 
         teamRepository.save(team);
+    }
+    
+    private Team determineTeam(Long teamId) {
+        // TODO: to be deleted
+        return teamRepository.determineTeam(teamId);
     }
 
     @Override
