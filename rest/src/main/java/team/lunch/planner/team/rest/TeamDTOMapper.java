@@ -1,6 +1,9 @@
 package team.lunch.planner.team.rest;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -15,10 +18,14 @@ class TeamDTOMapper {
     private final MemberDTOMapper memberDTOMapper;
 
     Team map(TeamDTO team) {
-        return new Team(team.getDatabaseId(), team.getName(), Collections.emptyList(), new Lunch(null, Collections.emptyList()));
+//        team.getMembers().stream().map(memberDTOMapper::map).collect(Collectors.toList());
+        return new Team(team.getDatabaseId(), team.getName(), new ArrayList<>(), new Lunch(null, Collections.emptyList()));
     }
     
     TeamDTO map(Team team) {
-        return new TeamDTO(team.getId(), team.getName(), Collections.emptyList());
+        List<MemberDTO> members = team.getMembers().stream()
+                .map(memberDTOMapper::map)
+                .collect(Collectors.toList());
+        return new TeamDTO(team.getId(), team.getName(), members);
     }
 }

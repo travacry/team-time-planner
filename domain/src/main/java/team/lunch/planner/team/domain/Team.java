@@ -5,7 +5,6 @@ import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import team.lunch.planner.user.domain.User;
 
 @RequiredArgsConstructor
 @Getter
@@ -16,4 +15,9 @@ public class Team {
     private final String name;
     private final List<Member> members;
     private final Lunch lunch;
+    
+    public void addMember(Member member) {
+        // TODO Auto-generated method stub
+        
+    }
 }
