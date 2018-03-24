@@ -9,7 +9,12 @@
 <ul>
     <li *ngFor="let participant of team.lunch.participants">
         <span>{{participant.name}}</span>
-        <span>{{participant.turn}}</span>
-        <span>{{participant.present}}</span>
+        <span *ngIf="participant.turn">X</span>
+        <span>
+            <label class="checkbox">
+                <input type="checkbox" [(ngModel)]="participant.present">
+                Remember me
+            </label>
+        </span>
     </li>
 </ul>
