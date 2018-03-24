@@ -1,7 +1,7 @@
-<h2>{{team.name}}</h2>
-<h3>Teammitglieder</h3>
+<h3 class="title is-3">{{team.name}}</h3>
+<h4 class="title is-4">Teammitglieder</h4>
 <ul>
     <li *ngFor="let member of team.members">
-        <span>Ein Mitglied</span>
+        <span>{{member.name}}</span>
     </li>
 </ul>

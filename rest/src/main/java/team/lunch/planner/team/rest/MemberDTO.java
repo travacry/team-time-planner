@@ -22,4 +22,6 @@ public class MemberDTO extends ResourceSupport implements Serializable {
     @JsonIgnore
     private final Long databaseUserId;
     private String name;
+    private boolean turn;
+    private boolean present;
 }
