@@ -10,11 +10,11 @@ import team.lunch.planner.team.domain.Member;
 class MemberDTOMapper {
 
     Member map(MemberDTO member) {
-        return null;
+        return new Member(member.getDatabaseId(), member.getDatabaseUserId());
     }
     
     MemberDTO map(Member member) {
-        return null;
+        return new MemberDTO(member.getId(), member.getUserId());
     }
     
 }
