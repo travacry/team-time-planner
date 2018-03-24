@@ -1,5 +1,6 @@
 package team.lunch.planner.team.domain;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,8 +17,8 @@ class DefaultTeamService implements TeamService {
     private final EventBus eventBus;
     
     @Override
-    public Team saveTeam(Team team) {
-        return teamRepository.save(team);
+    public Team createTeam(Long userId, String teamName) {
+        return teamRepository.save(new Team(null, teamName, Collections.singletonList(new Member(null, userId)), new Lunch(null, Collections.emptyList())));
     }
 
     @Override

@@ -16,7 +16,4 @@ public class Team {
     private final List<Member> members;
     private final Lunch lunch;
     
-    public void addMember(Member member) {
-        members.add(member);
-    }
 }

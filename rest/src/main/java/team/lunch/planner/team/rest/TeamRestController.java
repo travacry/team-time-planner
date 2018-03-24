@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import team.lunch.planner.AbstractController;
-import team.lunch.planner.team.domain.Member;
-import team.lunch.planner.team.domain.Team;
 import team.lunch.planner.team.domain.TeamService;
 import team.lunch.planner.user.domain.User;
 import team.lunch.planner.user.domain.UserService;
@@ -57,10 +55,7 @@ public class TeamRestController extends AbstractController {
     public ResponseEntity<Resource<TeamDTO>> createTeam(@RequestBody TeamDTO teamDTO) {
         User currentUser = userService.determineCurrentUser();
         
-        Team team = teamDTOMapper.map(teamDTO);
-        team.addMember(new Member(null, currentUser.getId()));
-        
-        return ResponseEntity.status(HttpStatus.CREATED).body(createResource(teamDTOMapper.map(teamService.saveTeam(team)), teamResourceProcessor));
+        return ResponseEntity.status(HttpStatus.CREATED).body(createResource(teamDTOMapper.map(teamService.createTeam(currentUser.getId(), teamDTO.getName())), teamResourceProcessor));
     }
 
 }

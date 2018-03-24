@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface TeamService {
     
-    Team saveTeam(Team team);
+    Team createTeam(Long userId, String teamName);
 
     Optional<Team> determineTeam(Long userId, Long teamId);
 
