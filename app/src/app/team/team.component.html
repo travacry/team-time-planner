@@ -1,3 +1,7 @@
-<p>
-  team works! {{team.name}}
-</p>
+<h2>{{team.name}}</h2>
+<h3>Teammitglieder</h3>
+<ul>
+    <li *ngFor="let member of team.members">
+        <span>Ein Mitglied</span>
+    </li>
+</ul>
