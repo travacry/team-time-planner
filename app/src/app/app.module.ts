@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserService } from './user.service';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamsService } from './teams.service';
+import { TeamsHolder } from './teams.holder';
 import { TeamComponent } from './team/team.component';
 
 
@@ -24,7 +25,7 @@ import { TeamComponent } from './team/team.component';
         AppRoutingModule,
         HttpClientModule
     ],
-    providers: [UserService, TeamsService],
+    providers: [UserService, TeamsService, TeamsHolder],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
