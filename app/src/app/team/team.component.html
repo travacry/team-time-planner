@@ -5,3 +5,11 @@
         <span>{{member.name}}</span>
     </li>
 </ul>
+<h4 class="title is-4">Mittagessen</h4>
+<ul>
+    <li *ngFor="let participant of team.lunch.participants">
+        <span>{{participant.name}}</span>
+        <span>{{participant.turn}}</span>
+        <span>{{participant.present}}</span>
+    </li>
+</ul>
