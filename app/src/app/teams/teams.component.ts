@@ -19,7 +19,10 @@ export class TeamsComponent implements OnInit {
     }
 
     onCreate() {
-        this.teamsService.createTeam(this.teamName).subscribe(team => this.teams.push(team));
+        this.teamsService.createTeam(this.teamName).subscribe(team => {
+            this.teams.push(team);
+            this.teamName = '';
+        });
     }
 
 }
