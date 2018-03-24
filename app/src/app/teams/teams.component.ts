@@ -10,7 +10,8 @@ import { Team }              from '../team';
 })
 export class TeamsComponent implements OnInit {
 
-    private teamName: string;
+    teams: Team[];
+    teamName: string;
 
     constructor(
         private teamsService: TeamsService,
@@ -18,21 +19,17 @@ export class TeamsComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.teamsService.getTeams().subscribe(teams => this.teamsHolder.setTeams(teams));
+        this.teamsService.getTeams().subscribe(teams => {
+            this.teams = teams;
+            this.teamsHolder.setTeams(teams);
+        });
     }
 
     onCreate() {
         this.teamsService.createTeam(this.teamName).subscribe(team => {
             this.teamsHolder.addTeam(team);
+            this.teams.push(team);
             this.teamName = '';
         });
-    }
-
-    getTeamName(): string {
-        return this.teamName;
-    }
-
-    getTeams(): Team[] {
-        return this.teamsHolder.getTeams();
     }
 }

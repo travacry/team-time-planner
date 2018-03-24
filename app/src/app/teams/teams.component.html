@@ -7,7 +7,7 @@
     <button (click)="onCreate()" class="button is-primary">Team erstellen</button>
 </div>
 <ul>
-    <li *ngFor="let team of teams">
-        <a routerLink="/teams/{{team.name}}">{{team.name}}</a>
+    <li *ngFor="let team of teams; let i = index">
+        <a routerLink="/teams/{{i}}">{{team.name}}</a>
     </li>
 </ul>

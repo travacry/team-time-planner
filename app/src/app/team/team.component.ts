@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TeamsHolder } from '../teams.holder';
+import { Team } from '../team';
 
 @Component({
     selector: 'app-team',
@@ -8,14 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TeamComponent implements OnInit {
 
-    id: number;
+    team: Team;
 
     constructor(
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private teamsHolder: TeamsHolder
     ) { }
 
     ngOnInit() {
-        this.id = +this.route.snapshot.paramMap.get('id');
+        const index = +this.route.snapshot.paramMap.get('index');
+        this.team = this.teamsHolder.getTeam(index);
     }
 
 }
