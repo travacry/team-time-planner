@@ -37,7 +37,9 @@ class DefaultUserRepository implements UserRepository {
 
     @Override
     public User determineUser(Long userId) {
-        return userEntityMapper.map(userEntityRepository.findOne(userId));
+        return userEntityRepository.findById(userId)
+                .map(userEntityMapper::map)
+                .orElseThrow(IllegalStateException::new);
     }
 
     @Override

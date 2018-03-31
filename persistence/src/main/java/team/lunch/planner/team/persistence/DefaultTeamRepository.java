@@ -19,7 +19,9 @@ class DefaultTeamRepository implements TeamRepository {
 
     @Override
     public Team determineTeam(Long id) {
-        return teamEntityMapper.map(teamEntityRepository.findOne(id));
+        return teamEntityRepository.findById(id)
+                .map(teamEntityMapper::map)
+                .orElseThrow(IllegalStateException::new);
     }
     
     @Override
