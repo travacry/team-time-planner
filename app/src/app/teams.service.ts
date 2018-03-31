@@ -16,7 +16,7 @@ export class TeamsService {
                 'Accept': 'application/json'
             })
         };
-        return this.http.get<Team[]>('https://team-lunch.herokuapp.com/api/teams', httpOptions);
+        return this.http.get<Team[]>('/api/teams', httpOptions);
     }
 
     createTeam(teamName: string): Observable<Team> {
@@ -28,6 +28,6 @@ export class TeamsService {
         };
         const team = new Team();
         team.name = teamName;
-        return this.http.post<Team>('https://team-lunch.herokuapp.com/api/teams', team, httpOptions);
+        return this.http.post<Team>('/api/teams', team, httpOptions);
     }
 }
